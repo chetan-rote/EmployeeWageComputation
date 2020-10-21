@@ -20,30 +20,36 @@ namespace EmployeeWage
             const int IS_EMPLOYEE_PART_TIME = 2;
             const int EMP_RATE_PER_HOUR = 20;
             const int NUM_OF_WORKING_DAYS = 20;
+            const int MAX_WORKING_HOURS_IN_MONTH = 100;
             //Variable
-            int employeeHours = 0;
+            int employeeHours = 0, totalEmployeeHours = 0, totalWorkingDays = 0;
 
-            //Create reference of random class
-            Random random = new Random();
-            //Returns random value
-            int employeeCheck = random.Next(0, 2);
-
-            //Switchcase to check fulltime and part time.
-            switch (employeeCheck) 
+            while (totalEmployeeHours <= MAX_WORKING_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
-                case IS_EMPLOYEE_FULL_TIME:
-                    employeeHours = 8;
-                    break;
-                case IS_EMPLOYEE_PART_TIME:
-                    employeeHours = 4;
-                    break;
-                default:
-                    employeeHours = 0;
-                    break;
+                //Create reference of random class
+                Random random = new Random();
+                //Returns random value
+                int employeeCheck = random.Next(0, 2);
+                totalWorkingDays++;
+
+                //Switchcase to check fulltime and part time.
+                switch (employeeCheck)
+                {
+                    case IS_EMPLOYEE_FULL_TIME:
+                        employeeHours = 8;
+                        break;
+                    case IS_EMPLOYEE_PART_TIME:
+                        employeeHours = 4;
+                        break;
+                    default:
+                        employeeHours = 0;
+                        break;
+                }
+                totalEmployeeHours += employeeHours;                
+                Console.WriteLine("Days: " + totalWorkingDays + "Employee per hour" + employeeHours);
             }
-            //Calculates Monthly wage of employee
             int totalEmployeeWage = employeeHours * EMP_RATE_PER_HOUR * NUM_OF_WORKING_DAYS;
-            Console.WriteLine("Total Employee Monthly wage: " + totalEmployeeWage);
-        }        
+            Console.WriteLine("Employee wage is: " + totalEmployeeWage);
+        }   
     }
 }
