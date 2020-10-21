@@ -9,6 +9,7 @@
 
 /// Including the requried assemblies in to the program
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EmployeeWage
 {
@@ -18,24 +19,23 @@ namespace EmployeeWage
         {
             //Constants 
             const int IS_EMPLOYEE_FULL_TIME = 1;
-            const int EMP_RATE_PER_HOUR = 20;
-
-            //Variable
-            int employeeHours = 0;
-
-            //Checks if employee is present, if present adds 8 employeehours
-            //message, if employee not present adds 0 employeehours 
+            const int IS_EMPLOYEE_PART_TIME = 2;
+            
+            //Checks if employee is present, if present gives employee wage
+            //message, if employee not present displays absent
             if (EmployeePresent() == IS_EMPLOYEE_FULL_TIME)
             {
-                employeeHours = 8;
+                FullTimeEmployeeWage();
+            }
+            else
+            if (EmployeePresent() == IS_EMPLOYEE_PART_TIME)
+            {
+                PartTimeEmployeeWage();
             }
             else
             {
-                employeeHours = 0;
+                Console.WriteLine("Employee was absent");
             }
-
-            //If employee is present calculates wage as per 8 hours. 
-            Console.WriteLine("Employee Wage is" + employeeHours * EMP_RATE_PER_HOUR);
         }
         /// <summary>
         /// Method to checks whether employee is  present or not
@@ -47,6 +47,29 @@ namespace EmployeeWage
             //Returns random value
             return random.Next(0, 2);
         }
-
+        /// <summary>
+        /// Method to calculate Full time employee wage
+        /// </summary>
+        public static int FullTimeEmployeeWage()
+        {
+            int EMP_RATE_PER_HOUR = 20;
+            int employeeHours = 8;
+            //calculates wage for full time employee
+            int fullTimeWage = employeeHours * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Employee wage is " + fullTimeWage);
+            return fullTimeWage;
+        }
+        /// <summary>
+        /// Method to calculate Part time employee wage
+        /// </summary>
+        public static int PartTimeEmployeeWage()
+        {
+            int EMP_RATE_PER_HOUR = 20;
+            int employeeHours = 4;
+            //calculates wage for part time employee
+            int partTimeWage = employeeHours * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Employee wage is " + partTimeWage);
+            return partTimeWage;            
+        }
     }
 }
