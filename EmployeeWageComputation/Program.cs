@@ -16,21 +16,27 @@ namespace EmployeeWage
         //Constants 
         const int IS_EMPLOYEE_FULL_TIME = 1;
         const int IS_EMPLOYEE_PART_TIME = 2;
-        const int EMP_RATE_PER_HOUR = 20;
-        const int NUM_OF_WORKING_DAYS = 20;
-        const int MAX_WORKING_HOURS_IN_MONTH = 100;
         static void Main(string[] args)
         {
-            Console.WriteLine("Employee wage: " + ComputeEmployeeWage());
+            Console.WriteLine("Employee wage: " + ComputeEmployeeWage("Apple", 50, 20, 100));
+            Console.WriteLine("Employee wage: " + ComputeEmployeeWage("Google", 60, 22, 100));
         }
-        public static int ComputeEmployeeWage()
+        /// <summary>
+        /// Computes the employee wage.
+        /// </summary>
+        /// <param name="companyName">Name of the company.</param>
+        /// <param name="employeeRatePerHour">The employee rate per hour.</param>
+        /// <param name="numberOfWorkingDays">The number of working days.</param>
+        /// <param name="maxHrsInMonth">The maximum HRS in month.</param>
+        /// <returns></returns>
+        public static int ComputeEmployeeWage(string companyName, int employeeRatePerHour, int numberOfWorkingDays, int maxHrsInMonth)
         {
             //Variable
             int employeeHours = 0;
             int totalEmployeeHours = 0;
             int totalWorkingDays = 0;
 
-            while (totalEmployeeHours < MAX_WORKING_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+            while (totalEmployeeHours < maxHrsInMonth && totalWorkingDays < numberOfWorkingDays)
             {
                 //Create reference of random class
                 Random random = new Random();
@@ -53,7 +59,8 @@ namespace EmployeeWage
                 totalEmployeeHours += employeeHours;
                 Console.WriteLine("Day#:" + totalWorkingDays + " Emp Hrs: " +employeeHours);
             }
-            return employeeHours * EMP_RATE_PER_HOUR * NUM_OF_WORKING_DAYS;
+            //Calculates employee wage and returns it.
+            return employeeHours * employeeRatePerHour * numberOfWorkingDays;
         }
     }
 }
