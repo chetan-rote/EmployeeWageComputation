@@ -37,7 +37,7 @@ namespace EmployeeWageComputation
         /// Computes the employee wage.
         /// </summary>
         /// <returns></returns>
-        public int ComputeEmployeeWage()
+        public int ComputeEmpWage()
         {
             //Variable
             int employeeHours = 0;
@@ -68,12 +68,12 @@ namespace EmployeeWageComputation
                 Console.WriteLine("Day#:" + totalWorkingDays + " Emp Hrs: " + employeeHours);
             }
             //Calculates employee wage and returns it.
-            totalEmpWage= totalEmployeeHours * this.employeeRatePerHour;
+            totalEmpWage = totalEmployeeHours * this.employeeRatePerHour;
             Console.WriteLine("Total Employee wage for Company: " + companyName + "is: " + totalEmpWage);
-            return 0;//"Total Employee wage for Company: " + companyName + "is: " + totalEmpWage;
+            return 0;
         }
 
-        public string toString()
+        public string PrintTotalEmployeeWage()
         {
             return "Total Employee wage for Company: " + this.companyName + "is: " + this.totalEmpWage;
         }
